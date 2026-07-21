@@ -24,22 +24,8 @@ export function Footer() {
 
           <div className="shrink-0">
             <p className="text-lg font-bold text-white">Contato</p>
-            <div className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
-              <a
-                href={`mailto:${site.email}`}
-                className="transition-colors hover:text-gold"
-              >
-                {site.email}
-              </a>
-              <a
-                href={`tel:+55${site.phone.replace(/\D/g, "")}`}
-                className="transition-colors hover:text-gold"
-              >
-                {site.phone}
-              </a>
-            </div>
 
-            <div className="mt-5 flex items-center gap-4">
+            <div className="mt-4 flex items-center gap-4">
               <a
                 href={`https://wa.me/55${site.phone.replace(/\D/g, "")}`}
                 target="_blank"

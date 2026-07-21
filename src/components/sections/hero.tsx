@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { CTA_URL } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -69,7 +68,7 @@ export function Hero() {
 
         {/* Gold CTA band */}
         <a
-          href={CTA_URL}
+          href="#agendar"
           className="mt-12 flex w-full max-w-4xl items-center justify-center rounded-md bg-primary px-8 py-7 text-center text-2xl font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 sm:text-3xl lg:text-[42px]"
         >
           Quero validar minha importação

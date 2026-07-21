@@ -91,13 +91,14 @@ export function FinalCta() {
         </Reveal>
       </Container>
 
-      {/* White form panel */}
-      <div className="bg-white text-ink">
-        <Container className="py-16 lg:py-20">
+      {/* Form card */}
+      <div className="pb-16 lg:pb-24">
+        <Container>
           <Reveal className="mx-auto max-w-2xl">
-            <h3 className="text-center text-3xl font-bold text-ink sm:text-4xl">
-              Agende agora sua análise!
-            </h3>
+            <div className="rounded-2xl border border-black/10 bg-white p-8 text-ink shadow-ambient sm:p-10">
+              <h3 className="text-center text-3xl font-bold text-ink sm:text-4xl">
+                Agende agora sua análise!
+              </h3>
 
             {mutation.isSuccess ? (
               <div className="mt-10 rounded-md border border-primary bg-primary/10 p-8 text-center">
@@ -197,32 +198,32 @@ export function FinalCta() {
                 {choices.map((choice) => {
                   const err = errors[choice.name]?.message;
                   return (
-                    <fieldset key={choice.name} className="flex flex-col gap-3">
-                      <legend className="mb-1 text-lg font-bold text-ink">
+                    <label key={choice.name} className="flex flex-col gap-2">
+                      <span className="text-lg font-medium text-ink">
                         {choice.label}
-                      </legend>
-                      <div className="flex flex-wrap gap-3">
+                      </span>
+                      <select
+                        {...register(choice.name)}
+                        defaultValue=""
+                        className={`h-14 rounded-sm bg-[#f1f1f1] px-4 text-lg text-ink outline-none ring-primary/60 transition focus:ring-2 ${
+                          err ? "ring-2 ring-danger" : ""
+                        }`}
+                      >
+                        <option value="" disabled>
+                          Selecione uma opção
+                        </option>
                         {choice.options.map((opt) => (
-                          <label
-                            key={opt}
-                            className="flex cursor-pointer items-center gap-2.5 rounded-sm bg-[#f1f1f1] px-4 py-3 text-base text-ink transition has-[:checked]:bg-primary has-[:checked]:font-semibold"
-                          >
-                            <input
-                              type="radio"
-                              value={opt}
-                              {...register(choice.name)}
-                              className="size-4 accent-primary"
-                            />
+                          <option key={opt} value={opt}>
                             {opt}
-                          </label>
+                          </option>
                         ))}
-                      </div>
+                      </select>
                       {err && (
                         <span className="text-sm font-medium text-danger">
                           {err}
                         </span>
                       )}
-                    </fieldset>
+                    </label>
                   );
                 })}
 
@@ -243,6 +244,7 @@ export function FinalCta() {
                 </button>
               </form>
             )}
+            </div>
           </Reveal>
         </Container>
       </div>
