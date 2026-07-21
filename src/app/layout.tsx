@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { SITE_URL, site } from "@/lib/site";
 import { Providers } from "./providers";
+import { Analytics, GTM_ID } from "@/components/analytics";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -46,6 +47,16 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${montserrat.variable} h-full antialiased`}>
       <body className="min-h-full bg-background text-foreground">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <Analytics />
         <Providers>{children}</Providers>
       </body>
     </html>

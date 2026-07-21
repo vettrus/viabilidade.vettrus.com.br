@@ -3,9 +3,23 @@ import { z } from "zod";
 export const CNPJ_OPTIONS = ["Sim", "Não"] as const;
 
 export const FATURAMENTO_OPTIONS = [
+  "Não faturo",
+  "Menos de 50 mil",
   "De 50 mil a 100 mil",
   "Acima de 100 mil",
 ] as const;
+
+// Faturamento abaixo do perfil atendido: não envia ao Kommo, redireciona.
+export const DISQUALIFYING_FATURAMENTO = [
+  "Não faturo",
+  "Menos de 50 mil",
+] as const;
+
+export function isDisqualified(faturamento: string | undefined): boolean {
+  return (DISQUALIFYING_FATURAMENTO as readonly string[]).includes(
+    faturamento ?? "",
+  );
+}
 
 export const CANAL_OPTIONS = [
   "Loja física",

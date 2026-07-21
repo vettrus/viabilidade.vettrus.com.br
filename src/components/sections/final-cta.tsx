@@ -1,20 +1,63 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { getSupabase } from "@/lib/supabase/client";
 import {
   CANAL_OPTIONS,
   CNPJ_OPTIONS,
   FATURAMENTO_OPTIONS,
   OBJETIVO_OPTIONS,
+  isDisqualified,
   leadSchema,
   maskPhone,
   normalizeEmail,
   type LeadInput,
 } from "@/lib/lead-schema";
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+const UTM_KEYS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "gclid",
+  "fbclid",
+];
+
+// Captura UTMs/click ids da URL atual (LP single-page mantém a query).
+function collectUtm(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  const out: Record<string, string> = {};
+  for (const key of UTM_KEYS) {
+    const value = params.get(key) ?? params.get(key.toUpperCase());
+    if (value?.trim()) out[key] = value.trim().slice(0, 500);
+  }
+  if (document.referrer) out.referrer = document.referrer.slice(0, 500);
+  return out;
+}
+
+// Empacota as respostas de qualificação no `message`, nos rótulos que a
+// Edge Function (kommo.ts) usa para mapear os campos no Kommo.
+function buildMessage(data: LeadInput): string {
+  return [
+    `Possui CNPJ Ativo?: ${data.cnpj}`,
+    `Faturamento: ${data.faturamento}`,
+    `Qual canal principal de venda: ${data.canal}`,
+    `O que você quer avaliar?: ${data.objetivo}`,
+  ].join(" · ");
+}
 
 const textFields = [
   { name: "nome", label: "Nome", type: "text", placeholder: "Seu nome completo" },
@@ -48,6 +91,7 @@ const choices = [
 ] as const;
 
 export function FinalCta() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -57,18 +101,51 @@ export function FinalCta() {
     mode: "onTouched",
   });
 
+  // Faturamento abaixo do perfil: não envia ao Kommo, redireciona.
+  function onValid(data: LeadInput) {
+    if (isDisqualified(data.faturamento)) {
+      router.push("/nao-qualificado");
+      return;
+    }
+    mutation.mutate(data);
+  }
+
   const mutation = useMutation({
     mutationFn: async (data: LeadInput) => {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) {
-        const payload = await res.json().catch(() => null);
-        throw new Error(payload?.error ?? "Falha no envio. Tente novamente.");
+      // Edge Function submit-lead: grava em `leads` (admin) + sincroniza Kommo.
+      const { data: res, error } = await getSupabase().functions.invoke(
+        "submit-lead",
+        {
+          body: {
+            data: {
+              name: data.nome,
+              email: data.email,
+              phone: data.whatsapp,
+              message: buildMessage(data),
+              source_section: "formulario-viabilidade",
+              utm: collectUtm(),
+            },
+          },
+        },
+      );
+      if (error) {
+        let message = "Falha no envio. Tente novamente.";
+        const ctx = (error as { context?: Response }).context;
+        if (ctx?.json) {
+          try {
+            const body = await ctx.json();
+            if (body?.error) message = body.error;
+          } catch {
+            // corpo não-JSON
+          }
+        }
+        throw new Error(message);
       }
-      return res.json();
+      return res;
+    },
+    onSuccess: () => {
+      // Conversão: só leads qualificados (desqualificado nem chega aqui).
+      window.fbq?.("track", "Lead", { content_category: "Lead Vettrus" });
     },
   });
 
@@ -111,7 +188,7 @@ export function FinalCta() {
             ) : (
               <form
                 noValidate
-                onSubmit={handleSubmit((data) => mutation.mutate(data))}
+                onSubmit={handleSubmit(onValid)}
                 className="mt-10 flex flex-col gap-6"
               >
                 {textFields.map((field) => {

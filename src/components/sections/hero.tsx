@@ -39,21 +39,16 @@ export function Hero() {
             <p className="text-2xl font-extrabold uppercase text-primary sm:text-3xl lg:text-[36px]">
               Assista o vídeo:
             </p>
-            <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-[15px] bg-[#454545]">
-              <button
-                type="button"
-                aria-label="Reproduzir vídeo"
-                className="flex size-24 items-center justify-center transition-transform hover:scale-105"
-              >
-                <Image
-                  src="/assets/icon-play.svg"
-                  alt=""
-                  width={170}
-                  height={171}
-                  className="size-24"
-                />
-              </button>
-            </div>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="/assets/hero-containers.png"
+              className="aspect-video w-full overflow-hidden rounded-[15px] bg-[#454545] object-cover"
+            >
+              <source src="/assets/hero.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo.
+            </video>
           </div>
         </div>
 
