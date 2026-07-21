@@ -16,7 +16,7 @@ const METODO_URL = "https://metodo.vettrus.com.br/";
 export default function NaoQualificado() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-background py-16">
-      <Container className="max-w-2xl">
+      <Container className="max-w-3xl">
         <div className="rounded-2xl border border-border bg-card/70 p-8 shadow-ambient sm:p-12">
           <Image
             src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/logo-vettrus.png"
