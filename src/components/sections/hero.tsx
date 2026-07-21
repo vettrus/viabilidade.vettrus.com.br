@@ -46,7 +46,10 @@ export function Hero() {
               poster="/assets/hero-containers.png"
               className="aspect-video w-full overflow-hidden rounded-[15px] bg-[#454545] object-cover"
             >
-              <source src="/assets/hero.mp4" type="video/mp4" />
+              <source
+                src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/hero-web.mp4"
+                type="video/mp4"
+              />
               Seu navegador não suporta vídeo.
             </video>
           </div>
