@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-danger: var(--danger);
+  --color-ink: var(--ink);
+  --color-header: var(--header);
+  --font-sans: var(--font-montserrat);
+}
+
+/* Brand theme — near-black + gold (Análise de Viabilidade de Importação) */
+:root {
+  --background: #151515;
+  --foreground: #ffffff;
+  --heading: #ffffff;
+  --primary: #efb810;
+  --primary-foreground: #151515;
+  --accent: #efb810;
+  --accent-foreground: #151515;
+  --muted: #1f1f1f;
+  --muted-foreground: #d0d0d0;
+  --border: rgba(255, 255, 255, 0.14);
+  --card: #1f1f1f;
+  --ring: #efb810;
+  --gold: #efb810;
+  --danger: #e61200;
+  --ink: #151515;
+  --header: #151515;
+}
+
+@utility shadow-ambient {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 12px;
+}
+
+@utility shadow-gold {
+  box-shadow: 0px 4px 38.6px 0px #efb810;
+}
+
+@utility shadow-gold-soft {
+  box-shadow: 0px 4px 20.9px 0px #efb810;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 45%, transparent);
+    color: #ffffff;
+  }
+}
+
+/* Elevated dark panel with white outline — pain cards */
+.panel-outline {
+  background-color: #1f1f1f;
+}
+
+/* Scroll-reveal — gated on prefers-reduced-motion below */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

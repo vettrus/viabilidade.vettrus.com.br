@@ -1,0 +1,92 @@
+import Image from "next/image";
+import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
+import { CTA_URL } from "@/lib/site";
+
+const forWhom = [
+  "Ainda não importam;",
+  "Têm CNPJ ativo;",
+  "Faturam acima de R$ 100 mil/mês;",
+  "Vendem em loja física, e-commerce, marketplace ou B2B;",
+  "Já têm produtos com giro;",
+  "Compram de distribuidor, revendedor ou fornecedor nacional;",
+  "Querem melhorar margem, criar marca própria ou reduzir dependência de terceiros;",
+  "Têm disposição para avaliar importação com critério, não por achismo.",
+];
+
+const notForWhom = [
+  "Pessoa física;",
+  "Quem não tem CNPJ;",
+  "Quem ainda não tem operação comercial validada;",
+  "Quem busca renda extra;",
+  "Quem quer importar sem capital;",
+  "Quem procura curso básico de importação;",
+  "Quem espera uma lista gratuita de fornecedores ou produtos prontos.",
+];
+
+export function Audience() {
+  return (
+    <section id="publico-alvo" className="py-20 lg:py-28">
+      <Container>
+        <Reveal>
+          <h2 className="text-2xl font-bold uppercase leading-tight text-white sm:text-3xl lg:text-4xl">
+            Esta análise é para empresas que:
+          </h2>
+        </Reveal>
+
+        <ul className="mt-10 flex flex-col gap-4">
+          {forWhom.map((item, i) => (
+            <Reveal key={item} delay={i * 50}>
+              <li className="flex items-start gap-4">
+                <Image
+                  src="/assets/icon-check.png"
+                  alt=""
+                  width={47}
+                  height={47}
+                  className="mt-1 size-7 shrink-0"
+                />
+                <span className="text-lg font-medium leading-snug text-white sm:text-xl">
+                  {item}
+                </span>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+
+        <Reveal className="mt-16">
+          <h2 className="text-2xl font-bold uppercase leading-tight text-white sm:text-3xl lg:text-4xl">
+            Não é para:
+          </h2>
+        </Reveal>
+
+        <ul className="mt-10 flex flex-col gap-4">
+          {notForWhom.map((item, i) => (
+            <Reveal key={item} delay={i * 50}>
+              <li className="flex items-start gap-4">
+                <Image
+                  src="/assets/icon-x.png"
+                  alt=""
+                  width={47}
+                  height={47}
+                  className="mt-1 size-7 shrink-0"
+                />
+                <span className="text-lg font-medium leading-snug text-white sm:text-xl">
+                  {item}
+                </span>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+
+        <Reveal className="mt-16 flex justify-center">
+          <a
+            href={CTA_URL}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-6 text-center text-2xl font-extrabold uppercase leading-tight tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 sm:text-3xl"
+          >
+            Quero validar minha importação
+          </a>
+        </Reveal>
+      </Container>
+    </section>
+  );
+}
