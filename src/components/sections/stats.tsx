@@ -32,7 +32,7 @@ export function Stats() {
                   height={63}
                   className="h-12 w-auto shrink-0"
                 />
-                <p className="text-xl font-medium leading-tight text-white sm:text-2xl lg:text-3xl">
+                <p className="text-lg font-medium leading-tight text-white sm:text-xl lg:text-xl">
                   {stat.prefix}
                   <span className="font-bold">{stat.strong}</span>
                   {stat.suffix}

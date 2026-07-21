@@ -7,7 +7,7 @@ export function Honesty() {
     <section className="bg-[#f0f0f0] text-ink">
       <Container className="pb-14">
         <Reveal>
-          <p className="max-w-4xl text-3xl font-bold leading-tight text-ink sm:text-4xl lg:text-5xl">
+          <p className="max-w-4xl text-xl font-bold leading-tight text-ink sm:text-2xl lg:text-3xl">
             Se importar não fizer sentido agora, você vai ouvir isso da gente.
           </p>
         </Reveal>

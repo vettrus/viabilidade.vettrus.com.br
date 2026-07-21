@@ -155,12 +155,12 @@ export function FinalCta() {
   return (
     <section id="agendar" className="overflow-hidden">
       {/* Dark intro */}
-      <Container className="py-20 text-center lg:py-28">
+      <Container className="py-14 text-center lg:py-20">
         <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-8">
-          <h2 className="text-3xl font-bold uppercase text-white sm:text-4xl">
+          <h2 className="text-xl font-bold uppercase text-white sm:text-2xl">
             Agora é com você:
           </h2>
-          <p className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+          <p className="text-xl font-bold leading-tight text-white sm:text-2xl lg:text-3xl">
             Continuar adiando no escuro, ou{" "}
             <span className="text-primary">gastar 1 hora</span> e sair sabendo se
             esse caminho é pra você.
@@ -169,17 +169,17 @@ export function FinalCta() {
       </Container>
 
       {/* Form card */}
-      <div className="pb-16 lg:pb-24">
+      <div className="pb-12 lg:pb-16">
         <Container>
           <Reveal className="mx-auto max-w-2xl">
             <div className="rounded-2xl border border-black/10 bg-white p-8 text-ink shadow-ambient sm:p-10">
-              <h3 className="text-center text-3xl font-bold text-ink sm:text-4xl">
+              <h3 className="text-center text-xl font-bold text-ink sm:text-2xl">
                 Agende agora sua análise!
               </h3>
 
             {mutation.isSuccess ? (
               <div className="mt-10 rounded-md border border-primary bg-primary/10 p-8 text-center">
-                <p className="text-2xl font-bold text-ink">Recebemos seus dados!</p>
+                <p className="text-xl font-bold text-ink">Recebemos seus dados!</p>
                 <p className="mt-2 text-lg text-ink/80">
                   Nossa equipe entra em contato em minutos para agendar sua
                   análise gratuita.
@@ -194,7 +194,7 @@ export function FinalCta() {
                 {textFields.map((field) => {
                   const err = errors[field.name]?.message;
                   const base =
-                    "h-14 rounded-sm bg-[#f1f1f1] px-4 text-lg text-ink outline-none ring-primary/60 transition focus:ring-2";
+                    "h-12 rounded-sm bg-[#f1f1f1] px-4 text-lg text-ink outline-none ring-primary/60 transition focus:ring-2";
                   const invalid = err ? "ring-2 ring-danger" : "";
 
                   if (field.name === "whatsapp") {
@@ -282,7 +282,7 @@ export function FinalCta() {
                       <select
                         {...register(choice.name)}
                         defaultValue=""
-                        className={`h-14 rounded-sm bg-[#f1f1f1] px-4 text-lg text-ink outline-none ring-primary/60 transition focus:ring-2 ${
+                        className={`h-12 rounded-sm bg-[#f1f1f1] px-4 text-lg text-ink outline-none ring-primary/60 transition focus:ring-2 ${
                           err ? "ring-2 ring-danger" : ""
                         }`}
                       >
@@ -313,7 +313,7 @@ export function FinalCta() {
                 <button
                   type="submit"
                   disabled={mutation.isPending}
-                  className="mt-4 inline-flex h-16 items-center justify-center rounded-md bg-primary px-9 text-lg font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:text-xl"
+                  className="mt-4 inline-flex h-14 items-center justify-center rounded-md bg-primary px-9 text-lg font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:text-lg"
                 >
                   {mutation.isPending
                     ? "Enviando..."

@@ -20,17 +20,17 @@ const evaluated = [
 
 export function WhatIs() {
   return (
-    <section className="bg-[#f0f0f0] py-20 text-ink lg:py-28">
+    <section className="bg-[#f0f0f0] py-14 text-ink lg:py-20">
       <Container>
         <Reveal className="flex flex-col gap-6">
           <h2
-            className="text-3xl font-bold uppercase leading-tight text-ink sm:text-4xl lg:text-5xl"
+            className="text-xl font-bold uppercase leading-tight text-ink sm:text-2xl lg:text-3xl"
             data-node-id="191:134"
           >
             O que é a Análise de Viabilidade?
           </h2>
           <p
-            className="max-w-5xl text-2xl font-bold leading-snug text-ink sm:text-3xl lg:text-4xl"
+            className="max-w-5xl text-xl font-bold leading-snug text-ink sm:text-xl lg:text-2xl"
             data-node-id="191:135"
           >
             A <span className="text-black">Análise de Viabilidade de Importação</span>{" "}
@@ -59,7 +59,7 @@ export function WhatIs() {
         </div>
 
         <Reveal className="mt-16">
-          <h3 className="text-2xl font-bold uppercase text-ink sm:text-3xl">
+          <h3 className="text-xl font-bold uppercase text-ink sm:text-xl">
             Nela, avaliamos:
           </h3>
           <ul className="mt-8 flex max-w-4xl flex-col gap-4">
@@ -69,7 +69,7 @@ export function WhatIs() {
                   aria-hidden="true"
                   className="mt-3 size-2.5 shrink-0 rounded-full bg-ink"
                 />
-                <span className="text-xl font-medium leading-snug text-ink sm:text-2xl">
+                <span className="text-lg font-medium leading-snug text-ink sm:text-xl">
                   {item}
                 </span>
               </li>

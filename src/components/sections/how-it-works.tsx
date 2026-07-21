@@ -14,7 +14,7 @@ export function HowItWorks() {
     <section id="como-funciona" className="pt-20 lg:pt-28">
       <Container>
         <Reveal>
-          <h2 className="text-center text-4xl font-bold text-primary sm:text-5xl">
+          <h2 className="text-center text-2xl font-bold text-primary sm:text-3xl">
             Como funciona?
           </h2>
         </Reveal>
@@ -24,11 +24,11 @@ export function HowItWorks() {
             <Reveal key={step.n} delay={i * 80}>
               <div className="flex items-stretch overflow-hidden rounded-sm bg-white/10">
                 <span aria-hidden="true" className="w-2 shrink-0 bg-primary" />
-                <div className="flex flex-1 items-center gap-6 px-6 py-6 sm:gap-10 sm:px-8">
-                  <span className="text-4xl font-bold text-primary sm:text-5xl">
+                <div className="flex flex-1 items-center gap-6 px-6 py-6 sm:gap-6 sm:px-8">
+                  <span className="text-2xl font-bold text-primary sm:text-3xl">
                     {step.n}
                   </span>
-                  <span className="text-xl font-bold leading-snug text-white sm:text-2xl">
+                  <span className="text-lg font-bold leading-snug text-white sm:text-xl">
                     {step.label}
                   </span>
                 </div>

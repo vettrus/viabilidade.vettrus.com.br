@@ -31,10 +31,10 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-14 lg:py-20">
       <Container>
         <Reveal>
-          <h2 className="text-center text-6xl font-bold text-white sm:text-7xl">
+          <h2 className="text-center text-4xl font-bold text-white sm:text-5xl">
             FAQ
           </h2>
         </Reveal>
@@ -51,12 +51,12 @@ export function Faq() {
                     aria-expanded={isOpen}
                     className="flex w-full items-center justify-between gap-4 px-7 py-6 text-left"
                   >
-                    <span className="text-xl font-semibold leading-snug text-ink sm:text-2xl">
+                    <span className="text-lg font-semibold leading-snug text-ink sm:text-xl">
                       {item.q}
                     </span>
                     <span
                       aria-hidden="true"
-                      className={`shrink-0 text-2xl text-ink/50 transition-transform duration-300 ${
+                      className={`shrink-0 text-xl text-ink/50 transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     >

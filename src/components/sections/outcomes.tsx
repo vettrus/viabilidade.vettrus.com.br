@@ -11,10 +11,10 @@ const outcomes = [
 
 export function Outcomes() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-14 lg:py-20">
       <Container>
         <Reveal>
-          <h2 className="text-3xl font-bold uppercase text-primary sm:text-4xl">
+          <h2 className="text-xl font-bold uppercase text-primary sm:text-2xl">
             Você sai da análise com:
           </h2>
         </Reveal>
@@ -27,7 +27,7 @@ export function Outcomes() {
                   aria-hidden="true"
                   className="mt-2 size-3 shrink-0 rounded-full bg-primary"
                 />
-                <span className="text-xl font-medium leading-snug text-white sm:text-2xl">
+                <span className="text-lg font-medium leading-snug text-white sm:text-xl">
                   {item}
                 </span>
               </li>
@@ -37,7 +37,7 @@ export function Outcomes() {
 
         <Reveal className="mt-14">
           <p
-            className="max-w-5xl text-lg font-medium leading-relaxed text-white sm:text-xl lg:text-2xl"
+            className="max-w-5xl text-lg font-medium leading-relaxed text-white sm:text-lg lg:text-xl"
             data-node-id="199:14"
           >
             <span className="font-bold">Importante:</span> a análise não entrega

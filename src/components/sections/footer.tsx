@@ -4,9 +4,9 @@ import { site } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-background pt-14 pb-10">
+    <footer className="border-t border-white/10 bg-background pt-10 pb-10">
       <Container>
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xl">
             <Image
               src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/logo-vettrus-footer.png"
