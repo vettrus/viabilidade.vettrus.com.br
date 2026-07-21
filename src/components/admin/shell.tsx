@@ -55,7 +55,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <aside className="hidden w-60 shrink-0 flex-col border-r border-border bg-card/40 p-5 md:flex">
         <div className="mb-8 px-2">
           <Image
-            src="/assets/logo-vettrus.png"
+            src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/logo-vettrus.png"
             alt="Vettrus"
             width={368}
             height={84}

@@ -41,7 +41,7 @@ export function HowItWorks() {
       {/* Full-bleed photo strip */}
       <div className="relative mt-20 h-[300px] w-full sm:h-[420px] lg:h-[480px]">
         <Image
-          src="/assets/photo-how.jpg"
+          src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/photo-how.jpg"
           alt="Especialistas Vettrus em análise de importação"
           fill
           sizes="100vw"

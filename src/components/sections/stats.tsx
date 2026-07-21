@@ -26,7 +26,7 @@ export function Stats() {
             <Reveal key={stat.strong} delay={i * 80}>
               <div className="flex items-center gap-5">
                 <Image
-                  src="/assets/icon-stat.png"
+                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-stat.png"
                   alt=""
                   width={93}
                   height={63}

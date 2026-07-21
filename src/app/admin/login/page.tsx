@@ -31,7 +31,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-sm">
         <div className="mb-6 flex flex-col items-center gap-2 text-center">
           <Image
-            src="/assets/logo-vettrus.png"
+            src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/logo-vettrus.png"
             alt="Vettrus"
             width={368}
             height={84}

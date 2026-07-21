@@ -3,9 +3,9 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
 const photos = [
-  { src: "/assets/what-is-1.jpg", alt: "Especialista Vettrus em reunião" },
-  { src: "/assets/what-is-2.jpg", alt: "Equipe Vettrus em atendimento" },
-  { src: "/assets/what-is-3.jpg", alt: "Consultoria de importação Vettrus" },
+  { src: "https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/what-is-1.jpg", alt: "Especialista Vettrus em reunião" },
+  { src: "https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/what-is-2.jpg", alt: "Equipe Vettrus em atendimento" },
+  { src: "https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/what-is-3.jpg", alt: "Consultoria de importação Vettrus" },
 ];
 
 const evaluated = [

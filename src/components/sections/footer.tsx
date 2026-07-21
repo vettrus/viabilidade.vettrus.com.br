@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xl">
             <Image
-              src="/assets/logo-vettrus-footer.png"
+              src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/logo-vettrus-footer.png"
               alt="Vettrus Soluções Internacionais"
               width={376}
               height={85}

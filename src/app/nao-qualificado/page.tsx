@@ -19,7 +19,7 @@ export default function NaoQualificado() {
       <Container className="max-w-2xl">
         <div className="rounded-2xl border border-border bg-card/70 p-8 shadow-ambient sm:p-12">
           <Image
-            src="/assets/logo-vettrus.png"
+            src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/logo-vettrus.png"
             alt="Vettrus"
             width={368}
             height={84}

@@ -39,7 +39,7 @@ export function Audience() {
             <Reveal key={item} delay={i * 50}>
               <li className="flex items-start gap-4">
                 <Image
-                  src="/assets/icon-check.png"
+                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-check.png"
                   alt=""
                   width={47}
                   height={47}
@@ -64,7 +64,7 @@ export function Audience() {
             <Reveal key={item} delay={i * 50}>
               <li className="flex items-start gap-4">
                 <Image
-                  src="/assets/icon-x.png"
+                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-x.png"
                   alt=""
                   width={47}
                   height={47}

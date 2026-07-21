@@ -16,7 +16,7 @@ export function Honesty() {
       {/* Full-bleed photo strip */}
       <div className="relative h-[280px] w-full sm:h-[420px]">
         <Image
-          src="/assets/band-analysis.jpg"
+          src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/band-analysis.jpg"
           alt="Reunião de análise de viabilidade com a equipe Vettrus"
           fill
           sizes="100vw"

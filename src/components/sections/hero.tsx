@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { VideoPlayer } from "@/components/ui/video-player";
 
 export function Hero() {
   return (
@@ -7,7 +8,7 @@ export function Hero() {
       {/* Background — high-angle shipping containers, faded into the dark */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/hero-containers.png"
+          src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/hero-containers.png"
           alt=""
           fill
           priority
@@ -20,7 +21,7 @@ export function Hero() {
       <Container className="relative pt-10 pb-16 lg:pt-14 lg:pb-24">
         {/* Logo */}
         <Image
-          src="/assets/logo-vettrus.png"
+          src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/logo-vettrus.png"
           alt="Vettrus Soluções Internacionais"
           width={368}
           height={84}
@@ -39,19 +40,7 @@ export function Hero() {
             <p className="text-2xl font-extrabold uppercase text-primary sm:text-3xl lg:text-[36px]">
               Assista o vídeo:
             </p>
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              poster="/assets/hero-containers.png"
-              className="aspect-video w-full overflow-hidden rounded-[15px] bg-[#454545] object-cover"
-            >
-              <source
-                src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/hero-web.mp4"
-                type="video/mp4"
-              />
-              Seu navegador não suporta vídeo.
-            </video>
+            <VideoPlayer src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/hero-web.mp4" poster="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/hero-containers.png" />
           </div>
         </div>
 

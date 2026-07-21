@@ -38,7 +38,7 @@ export function Pain() {
             <Reveal key={item} delay={(i % 2) * 90}>
               <div className="flex h-full items-start gap-5 rounded-md border-2 border-white bg-muted p-7">
                 <Image
-                  src="/assets/icon-pain.png"
+                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-pain.png"
                   alt=""
                   width={51}
                   height={51}
