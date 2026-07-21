@@ -19,15 +19,24 @@ export function Outcomes() {
           </h2>
         </Reveal>
 
-        <ul className="mt-10 flex max-w-4xl flex-col gap-6">
+        <ul className="mt-10 flex max-w-4xl flex-col gap-4">
           {outcomes.map((item, i) => (
             <Reveal key={item} delay={i * 70}>
-              <li className="flex items-start gap-5">
-                <span
-                  aria-hidden="true"
-                  className="mt-2 size-3 shrink-0 rounded-full bg-primary"
-                />
-                <span className="text-lg font-medium leading-snug text-white sm:text-xl">
+              <li className="flex items-center gap-4 rounded-xl border border-primary/20 bg-muted px-6 py-5">
+                <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/15 ring-1 ring-primary/40">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="size-5 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12l5 5L20 7" />
+                  </svg>
+                </span>
+                <span className="text-base font-medium leading-snug text-white sm:text-lg">
                   {item}
                 </span>
               </li>

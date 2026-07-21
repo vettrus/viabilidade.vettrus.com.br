@@ -30,12 +30,15 @@ export function WhatIs() {
             O que é a Análise de Viabilidade?
           </h2>
           <p
-            className="max-w-5xl text-xl font-bold leading-snug text-ink sm:text-xl lg:text-2xl"
+            className="max-w-4xl text-lg font-normal leading-snug text-ink/90 sm:text-xl"
             data-node-id="191:135"
           >
-            A <span className="text-black">Análise de Viabilidade de Importação</span>{" "}
+            A{" "}
+            <span className="font-bold text-black">
+              Análise de Viabilidade de Importação
+            </span>{" "}
             é uma conversa diagnóstica e gratuita, de{" "}
-            <span className="box-decoration-clone bg-primary px-1.5 py-0.5 text-ink">
+            <span className="box-decoration-clone bg-primary px-1.5 py-0.5 font-semibold text-ink">
               cerca de 1 hora
             </span>
             , com um especialista da Vettrus.

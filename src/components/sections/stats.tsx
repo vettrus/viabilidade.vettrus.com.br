@@ -1,14 +1,13 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
-type Stat = { prefix?: string; strong: string; suffix: React.ReactNode };
+type Stat = { number: string; caption: string };
 
 const stats: Stat[] = [
-  { prefix: "+ de ", strong: "22 anos", suffix: " de comércio exterior" },
-  { prefix: "+ de ", strong: "10 mil", suffix: " importações estruturadas" },
-  { prefix: "+ de ", strong: "350 clientes", suffix: " ativos" },
-  { strong: "2 escritórios", suffix: " na China" },
+  { number: "+22 anos", caption: "de comércio exterior" },
+  { number: "+10 mil", caption: "importações estruturadas" },
+  { number: "+350", caption: "clientes ativos" },
+  { number: "2", caption: "escritórios na China" },
 ];
 
 export function Stats() {
@@ -21,22 +20,25 @@ export function Stats() {
       <div className="pointer-events-none absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-[120px]" />
 
       <Container className="relative">
-        <div className="grid gap-x-12 gap-y-8 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-2">
+        <Reveal className="flex flex-col gap-3">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary">
+            Por dentro da Vettrus
+          </p>
+          <h2 className="text-2xl font-extrabold leading-tight text-white sm:text-3xl">
+            Pessoas, presença e operação real.
+          </h2>
+        </Reveal>
+
+        <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
           {stats.map((stat, i) => (
-            <Reveal key={stat.strong} delay={i * 80}>
-              <div className="flex items-center gap-5">
-                <Image
-                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-stat.png"
-                  alt=""
-                  width={93}
-                  height={63}
-                  className="h-12 w-auto shrink-0"
-                />
-                <p className="text-lg font-medium leading-tight text-white sm:text-xl lg:text-xl">
-                  {stat.prefix}
-                  <span className="font-bold">{stat.strong}</span>
-                  {stat.suffix}
-                </p>
+            <Reveal key={stat.number} delay={i * 80}>
+              <div className="flex flex-col gap-2 border-l-2 border-primary/40 pl-5">
+                <span className="text-4xl font-extrabold leading-none text-primary sm:text-5xl">
+                  {stat.number}
+                </span>
+                <span className="text-sm font-medium leading-snug text-white/80 sm:text-base">
+                  {stat.caption}
+                </span>
               </div>
             </Reveal>
           ))}

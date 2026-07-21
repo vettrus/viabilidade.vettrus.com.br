@@ -28,60 +28,68 @@ export function Audience() {
   return (
     <section id="publico-alvo" className="py-14 lg:py-20">
       <Container>
-        <Reveal>
-          <h2 className="text-xl font-bold uppercase leading-tight text-white sm:text-xl lg:text-2xl">
-            Esta análise é para empresas que:
-          </h2>
-        </Reveal>
-
-        <ul className="mt-10 flex flex-col gap-4">
-          {forWhom.map((item, i) => (
-            <Reveal key={item} delay={i * 50}>
-              <li className="flex items-start gap-4">
-                <Image
-                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-check.png"
-                  alt=""
-                  width={47}
-                  height={47}
-                  className="mt-1 size-7 shrink-0"
-                />
-                <span className="text-lg font-medium leading-snug text-white sm:text-lg">
-                  {item}
-                </span>
-              </li>
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
+          {/* É para */}
+          <div>
+            <Reveal>
+              <h2 className="text-xl font-bold uppercase leading-tight text-white sm:text-xl lg:text-2xl">
+                Esta análise é para empresas que:
+              </h2>
             </Reveal>
-          ))}
-        </ul>
 
-        <Reveal className="mt-16">
-          <h2 className="text-xl font-bold uppercase leading-tight text-white sm:text-xl lg:text-2xl">
-            Não é para:
-          </h2>
-        </Reveal>
+            <ul className="mt-8 flex flex-col gap-4">
+              {forWhom.map((item, i) => (
+                <Reveal key={item} delay={i * 50}>
+                  <li className="flex items-start gap-4">
+                    <Image
+                      src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-check.png"
+                      alt=""
+                      width={47}
+                      height={47}
+                      className="mt-1 size-7 shrink-0"
+                    />
+                    <span className="text-lg font-medium leading-snug text-white sm:text-lg">
+                      {item}
+                    </span>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
 
-        <ul className="mt-10 flex flex-col gap-4">
-          {notForWhom.map((item, i) => (
-            <Reveal key={item} delay={i * 50}>
-              <li className="flex items-start gap-4">
-                <Image
-                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-x.png"
-                  alt=""
-                  width={47}
-                  height={47}
-                  className="mt-1 size-7 shrink-0"
-                />
-                <span className="text-lg font-medium leading-snug text-white sm:text-lg">
-                  {item}
-                </span>
-              </li>
+          {/* Não é para */}
+          <div>
+            <Reveal>
+              <h2 className="text-xl font-bold uppercase leading-tight text-white sm:text-xl lg:text-2xl">
+                Não é para:
+              </h2>
             </Reveal>
-          ))}
-        </ul>
+
+            <ul className="mt-8 flex flex-col gap-4">
+              {notForWhom.map((item, i) => (
+                <Reveal key={item} delay={i * 50}>
+                  <li className="flex items-start gap-4">
+                    <Image
+                      src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-x.png"
+                      alt=""
+                      width={47}
+                      height={47}
+                      className="mt-1 size-7 shrink-0"
+                    />
+                    <span className="text-lg font-medium leading-snug text-white sm:text-lg">
+                      {item}
+                    </span>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </div>
 
         <Reveal className="mt-16 flex justify-center">
           <a
             href={CTA_URL}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-6 text-center text-xl font-extrabold uppercase leading-tight tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 sm:text-xl"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-center text-base font-extrabold uppercase leading-tight tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 sm:text-lg"
           >
             Quero validar minha importação
           </a>

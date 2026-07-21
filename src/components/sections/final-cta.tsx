@@ -313,7 +313,7 @@ export function FinalCta() {
                 <button
                   type="submit"
                   disabled={mutation.isPending}
-                  className="mt-4 inline-flex h-14 items-center justify-center rounded-md bg-primary px-9 text-lg font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:text-lg"
+                  className="mt-4 inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-base font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:text-lg"
                 >
                   {mutation.isPending
                     ? "Enviando..."

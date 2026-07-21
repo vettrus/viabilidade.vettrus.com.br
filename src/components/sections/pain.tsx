@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -33,18 +32,23 @@ export function Pain() {
           </h3>
         </Reveal>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {blockers.map((item, i) => (
-            <Reveal key={item} delay={(i % 2) * 90}>
-              <div className="flex h-full items-start gap-5 rounded-md border-2 border-white bg-muted p-7">
-                <Image
-                  src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/icon-pain.png"
-                  alt=""
-                  width={51}
-                  height={51}
-                  className="mt-1 size-9 shrink-0"
-                />
-                <p className="text-lg font-medium leading-snug text-white sm:text-lg">
+            <Reveal key={item} delay={(i % 3) * 80}>
+              <div className="flex h-full flex-col items-center gap-5 rounded-2xl border border-danger/30 bg-gradient-to-b from-muted to-[#161616] p-8 text-center shadow-[0_20px_60px_-40px_var(--danger)]">
+                <span className="grid size-12 shrink-0 place-items-center rounded-full bg-danger/15 ring-1 ring-danger/40">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="size-5 text-danger"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  >
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </span>
+                <p className="text-base font-medium leading-snug text-white sm:text-lg">
                   {item}
                 </p>
               </div>

@@ -2,17 +2,20 @@ export function Header() {
   return (
     <header
       id="topo"
-      className="sticky top-0 z-50 bg-primary shadow-gold-soft"
+      className="relative bg-primary shadow-gold-soft"
       data-node-id="247:91"
     >
-      <div className="mx-auto flex min-h-[64px] w-full max-w-6xl flex-wrap items-center justify-center gap-x-3 gap-y-2 px-6 py-3 text-center sm:min-h-[80px] lg:px-8">
-        <span className="text-lg font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-xl lg:text-[20px]">
+      <div className="mx-auto flex min-h-[44px] w-full max-w-6xl flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 py-2 text-center sm:min-h-[64px] sm:gap-x-3 sm:px-6 sm:py-3 lg:px-8">
+        <span className="text-sm font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-lg lg:text-[20px]">
           Valide sua importação
         </span>
 
-        <span className="bg-ink px-3 py-1 text-lg font-extrabold uppercase leading-tight tracking-tight text-white sm:text-xl lg:text-[20px]">
+        <a
+          href="#agendar"
+          className="bg-ink px-2 py-1 text-sm font-extrabold uppercase leading-tight tracking-tight text-white transition-colors hover:text-primary sm:px-3 sm:text-lg lg:text-[20px]"
+        >
           Com uma análise gratuita!
-        </span>
+        </a>
       </div>
     </header>
   );

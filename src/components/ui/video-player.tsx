@@ -14,10 +14,12 @@ export function VideoPlayer({
   src,
   poster,
   className,
+  autoPlay = false,
 }: {
   src: string;
   poster?: string;
   className?: string;
+  autoPlay?: boolean;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -25,7 +27,8 @@ export function VideoPlayer({
 
   const [started, setStarted] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
+  // Autoplay exige mudo (política dos navegadores) — usuário reativa o som.
+  const [muted, setMuted] = useState(autoPlay);
   const [cur, setCur] = useState(0);
   const [dur, setDur] = useState(0);
   const [show, setShow] = useState(true);
@@ -36,6 +39,16 @@ export function VideoPlayer({
     document.addEventListener("fullscreenchange", onFs);
     return () => document.removeEventListener("fullscreenchange", onFs);
   }, []);
+
+  // Dispara o autoplay mudo assim que o componente monta.
+  useEffect(() => {
+    if (!autoPlay) return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    const p = v.play();
+    if (p) p.catch(() => {});
+  }, [autoPlay]);
 
   const armHide = () => {
     setShow(true);
@@ -88,8 +101,11 @@ export function VideoPlayer({
         src={src}
         poster={poster}
         playsInline
-        preload="metadata"
+        autoPlay={autoPlay}
+        muted={autoPlay ? muted : undefined}
+        preload={autoPlay ? "auto" : "metadata"}
         onClick={toggle}
+        onVolumeChange={(e) => setMuted(e.currentTarget.muted)}
         onPlay={() => {
           setPlaying(true);
           setStarted(true);
