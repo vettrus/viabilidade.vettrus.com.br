@@ -34,7 +34,11 @@ export function WhatIs() {
           </h2>
           <p className="max-w-[680px] text-[clamp(1.0625rem,1.4vw,1.3125rem)] leading-relaxed text-[#B9BFC6]">
             Uma conversa diagnóstica e <strong className="text-white">gratuita</strong>,
-            de cerca de 1 hora, com um especialista da Vettrus.
+            de{" "}
+            <span className="box-decoration-clone rounded-[3px] bg-primary px-1.5 py-0.5 font-semibold text-ink">
+              cerca de 1 hora
+            </span>
+            , com um especialista da Vettrus.
           </p>
           <p className="text-[17px] leading-relaxed text-[#9BA1A8]">
             Se importar não fizer sentido agora, você vai ouvir isso da gente.

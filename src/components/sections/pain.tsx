@@ -29,12 +29,10 @@ export function Pain() {
             O problema
           </p>
           <h2 className="text-[clamp(1.875rem,4vw,3.125rem)] font-bold leading-[1.08] tracking-[-0.02em] text-white text-balance">
-            Seu concorrente pode estar importando com mais margem.
+            Quanto mais intermediários, menor o seu controle sobre a operação.
           </h2>
           <p className="text-lg leading-relaxed text-[#B9BFC6]">
-            Se sua empresa já vende, mas ainda depende de distribuidor,
-            revendedor ou fornecedor nacional, talvez você esteja deixando
-            margem na mesa.
+            Preço, prazo, disponibilidade e condições de compra ficam nas mãos de terceiros. E, enquanto esses custos se acumulam, sua empresa perde competitividade e limita o próprio crescimento.
           </p>
         </Reveal>
 
@@ -67,7 +65,7 @@ export function Pain() {
           </Reveal>
 
           {/* Card: o resultado */}
-          <Reveal className="flex h-full flex-col justify-center rounded-2xl border border-danger/25 bg-[#141619]/70 p-8 backdrop-blur-md sm:p-10">
+          <Reveal className="flex h-full flex-col justify-center rounded-2xl border border-primary/40 bg-[#141619]/70 p-8 backdrop-blur-md sm:p-10">
             <h3 className="mb-[18px] text-2xl font-bold text-primary sm:text-3xl">
               O resultado
             </h3>
