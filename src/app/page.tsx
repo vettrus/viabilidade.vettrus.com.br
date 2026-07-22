@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
 import { Stats } from "@/components/sections/stats";
@@ -24,6 +25,15 @@ export default function Home() {
         <Outcomes />
         <HowItWorks />
         <Audience />
+        <section className="relative h-[300px] w-full overflow-hidden md:h-[420px]">
+          <Image
+            src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/photo-1.jpg"
+            alt="Operação de importação Vettrus"
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_30%]"
+          />
+        </section>
         <Faq />
         <FinalCta />
       </main>
