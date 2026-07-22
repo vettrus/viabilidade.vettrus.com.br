@@ -30,7 +30,7 @@ export function Audience() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
           {/* É para */}
-          <div>
+          <div className="rounded-2xl border border-white/10 bg-muted p-7 lg:p-9">
             <Reveal>
               <h2 className="text-xl font-bold uppercase leading-tight text-white sm:text-xl lg:text-2xl">
                 Esta análise é para empresas que:
@@ -58,7 +58,7 @@ export function Audience() {
           </div>
 
           {/* Não é para */}
-          <div>
+          <div className="rounded-2xl border border-white/10 bg-muted p-7 lg:p-9">
             <Reveal>
               <h2 className="text-xl font-bold uppercase leading-tight text-white sm:text-xl lg:text-2xl">
                 Não é para:

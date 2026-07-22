@@ -31,7 +31,7 @@ export function NotLottery() {
 
             <a
               href={CTA_URL}
-              className="mt-2 inline-flex w-fit items-center justify-center rounded-md bg-primary px-8 py-4 text-center text-base font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 sm:text-lg"
+              className="mt-6 inline-flex w-fit items-center justify-center rounded-md bg-primary px-8 py-4 text-center text-base font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 sm:text-lg"
             >
               Quero validar minha importação
             </a>

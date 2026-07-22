@@ -27,14 +27,14 @@ export function WhatIs() {
             className="text-xl font-bold uppercase leading-tight text-ink sm:text-2xl lg:text-3xl"
             data-node-id="191:134"
           >
-            O que é a Análise de Viabilidade?
+            O que é ?
           </h2>
           <p
-            className="max-w-4xl text-lg font-normal leading-snug text-ink/90 sm:text-xl"
+            className="max-w-4xl text-2xl font-normal leading-snug text-ink/90 sm:text-3xl lg:text-4xl"
             data-node-id="191:135"
           >
             A{" "}
-            <span className="font-bold text-black">
+            <span className="box-decoration-clone bg-primary px-1.5 py-0.5 font-semibold text-ink">
               Análise de Viabilidade de Importação
             </span>{" "}
             é uma conversa diagnóstica e gratuita, de{" "}

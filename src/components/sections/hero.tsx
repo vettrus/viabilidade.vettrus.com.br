@@ -30,14 +30,14 @@ export function Hero() {
         />
 
         {/* Headline */}
-        <h1 className="mt-8 max-w-3xl text-2xl font-extrabold uppercase leading-[1.125] sm:text-3xl lg:mt-10 lg:text-[42px]">
+        <h1 className="mt-8 max-w-5xl text-2xl font-extrabold uppercase leading-[1.125] sm:text-3xl lg:mt-10 lg:text-[42px]">
           Enquanto você compra de distribuidor,
           <br />
           <span className="text-primary">seu concorrente importa</span>.
         </h1>
 
         {/* Video (autoplay ao carregar) */}
-        <div className="mt-8 w-full max-w-[520px] lg:mt-10">
+        <div className="mt-8 w-full max-w-[720px] lg:mt-10">
           <VideoPlayer
             autoPlay
             src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/hero-web.mp4"
@@ -46,7 +46,7 @@ export function Hero() {
         </div>
 
         {/* Subheadline */}
-        <p className="mt-8 max-w-2xl text-lg font-semibold leading-snug text-white sm:text-xl lg:mt-10 lg:text-2xl">
+        <p className="mt-8 max-w-2xl text-lg font-semibold leading-snug text-white sm:text-sm lg:mt-10 lg:text-2xl">
           Se sua empresa já vende, mas ainda depende de distribuidor,
           revendedor ou fornecedor nacional, talvez você esteja{" "}
           <span className="text-primary">perdendo margem de lucro</span>.

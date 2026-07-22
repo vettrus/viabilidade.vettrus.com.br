@@ -20,7 +20,7 @@ export function Honesty() {
           alt="Reunião de análise de viabilidade com a equipe Vettrus"
           fill
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[center_85%]"
         />
       </div>
     </section>
