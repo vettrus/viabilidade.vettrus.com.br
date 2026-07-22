@@ -46,7 +46,7 @@ export function Hero() {
         </div>
 
         {/* Subheadline */}
-        <p className="mt-8 max-w-2xl text-lg font-semibold leading-snug text-white sm:text-sm lg:mt-10 lg:text-2xl">
+        <p className="mt-8 max-w-2xl text-sm font-semibold leading-snug text-white sm:text-sm lg:mt-10 lg:text-2xl">
           Se sua empresa já vende, mas ainda depende de distribuidor,
           revendedor ou fornecedor nacional, talvez você esteja{" "}
           <span className="text-primary">perdendo margem de lucro</span>.
