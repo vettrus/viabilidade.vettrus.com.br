@@ -13,7 +13,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-25"
+          className="object-cover object-center opacity-75  "
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
@@ -46,7 +46,7 @@ export function Hero() {
         </div>
 
         {/* Subheadline */}
-        <p className="mt-8 max-w-2xl text-sm font-semibold leading-snug text-white sm:text-sm lg:mt-10 lg:text-2xl">
+        <p className="mt-8 max-w-2xl text-sm font-thin leading-snug text-white sm:text-sm lg:mt-10 lg:text-2xl">
           Se sua empresa já vende, mas ainda depende de distribuidor,
           revendedor ou fornecedor nacional, talvez você esteja{" "}
           <span className="text-primary">perdendo margem de lucro</span>.

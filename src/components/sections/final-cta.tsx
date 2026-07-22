@@ -152,116 +152,98 @@ export function FinalCta() {
   const whatsapp = register("whatsapp");
   const email = register("email");
 
+  const inputBase =
+    "rounded-[9px] border border-[#D6D6D0] bg-white px-[15px] py-3.5 text-[15px] text-ink outline-none transition focus:border-primary";
+  const labelBase = "text-[13px] font-semibold tracking-[0.01em] text-[#6A6A6A]";
+
   return (
-    <section id="agendar" className="overflow-hidden">
-      {/* Dark intro */}
-      <Container className="py-14 text-center lg:py-20">
-        <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-8">
-          <h2 className="text-xl font-bold uppercase text-white sm:text-2xl">
-            Agora é com você:
-          </h2>
-          <p className="text-xl font-bold leading-tight text-white sm:text-2xl lg:text-3xl">
-            Continuar adiando no escuro, ou{" "}
-            <span className="text-primary">gastar 1 hora</span> e sair sabendo se
-            esse caminho é pra você.
+    <section
+      id="agendar"
+      className="border-t border-black/[0.08] bg-white text-ink"
+    >
+      <Container className="grid items-start gap-10 py-16 lg:grid-cols-2 lg:gap-[72px] lg:py-28">
+        {/* Coluna esquerda — texto */}
+        <Reveal className="flex flex-col gap-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#141414]">
+            Agora é com você
           </p>
-        </Reveal>
-      </Container>
-
-      {/* Form card */}
-      <div className="pb-12 lg:pb-16">
-        <Container>
-          <Reveal className="mx-auto max-w-2xl">
-            <div className="rounded-2xl border border-black/10 bg-white p-8 text-ink shadow-ambient sm:p-10">
-              <h3 className="text-center text-xl font-bold text-ink sm:text-2xl">
-                Agende agora sua análise!
-              </h3>
-
-            {mutation.isSuccess ? (
-              <div className="mt-10 rounded-md border border-primary bg-primary/10 p-8 text-center">
-                <p className="text-xl font-bold text-ink">Recebemos seus dados!</p>
-                <p className="mt-2 text-lg text-ink/80">
-                  Nossa equipe entra em contato em minutos para agendar sua
-                  análise gratuita.
-                </p>
-              </div>
-            ) : (
-              <form
-                noValidate
-                onSubmit={handleSubmit(onValid)}
-                className="mt-10 flex flex-col gap-6"
+          <h2 className="text-[clamp(1.875rem,4vw,3.25rem)] font-extrabold leading-[1.06] tracking-[-0.025em] text-[#141414] text-balance">
+            Agende agora sua análise gratuita.
+          </h2>
+          <p className="max-w-[460px] text-lg leading-relaxed text-[#4A4A4A]">
+            Continuar adiando no escuro, ou gastar 1 hora e sair sabendo se esse
+            caminho é pra você.
+          </p>
+          <ul className="mt-2 flex flex-col gap-3.5">
+            {[
+              "Gratuita e sem compromisso",
+              "±1 hora, 100% on-line",
+              "Com um especialista Vettrus",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-center gap-3 text-base text-[#333]"
               >
-                {textFields.map((field) => {
-                  const err = errors[field.name]?.message;
-                  const base =
-                    "h-12 rounded-sm bg-[#f1f1f1] px-4 text-lg text-ink outline-none ring-primary/60 transition focus:ring-2";
-                  const invalid = err ? "ring-2 ring-danger" : "";
+                <span
+                  aria-hidden="true"
+                  className="size-[7px] shrink-0 rounded-full bg-primary"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-                  if (field.name === "whatsapp") {
-                    return (
-                      <label key={field.name} className="flex flex-col gap-2">
-                        <span className="text-lg font-medium text-ink">
-                          {field.label}
-                        </span>
-                        <input
-                          {...whatsapp}
-                          type="tel"
-                          inputMode="numeric"
-                          autoComplete="tel"
-                          placeholder={field.placeholder}
-                          className={`${base} ${invalid}`}
-                          onChange={(e) => {
-                            e.target.value = maskPhone(e.target.value);
-                            whatsapp.onChange(e);
-                          }}
-                        />
-                        {err && (
-                          <span className="text-sm font-medium text-danger">
-                            {err}
-                          </span>
-                        )}
-                      </label>
-                    );
-                  }
+        {/* Coluna direita — form */}
+        <Reveal>
+          {mutation.isSuccess ? (
+            <div className="rounded-[18px] border border-primary/50 bg-[#F6F6F3] p-9 text-center sm:p-14">
+              <div className="mx-auto mb-5 grid size-16 place-items-center rounded-full bg-primary/[0.18]">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="size-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12l5 5L20 7" />
+                </svg>
+              </div>
+              <h3 className="text-[26px] font-bold text-[#141414]">
+                Solicitação enviada!
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-[#555]">
+                Nossa equipe entra em contato em minutos. Fique de olho no seu
+                WhatsApp.
+              </p>
+            </div>
+          ) : (
+            <form
+              noValidate
+              onSubmit={handleSubmit(onValid)}
+              className="flex flex-col gap-[18px] rounded-[18px] border border-[#E4E4DF] bg-white p-7 shadow-[0_24px_60px_rgba(0,0,0,0.08)] sm:p-11"
+            >
+              {textFields.map((field) => {
+                const err = errors[field.name]?.message;
+                const invalid = err ? "border-danger" : "";
 
-                  if (field.name === "email") {
-                    return (
-                      <label key={field.name} className="flex flex-col gap-2">
-                        <span className="text-lg font-medium text-ink">
-                          {field.label}
-                        </span>
-                        <input
-                          {...email}
-                          type="email"
-                          inputMode="email"
-                          autoComplete="email"
-                          placeholder={field.placeholder}
-                          className={`${base} ${invalid}`}
-                          onChange={(e) => {
-                            e.target.value = normalizeEmail(e.target.value);
-                            email.onChange(e);
-                          }}
-                        />
-                        {err && (
-                          <span className="text-sm font-medium text-danger">
-                            {err}
-                          </span>
-                        )}
-                      </label>
-                    );
-                  }
-
+                if (field.name === "whatsapp") {
                   return (
-                    <label key={field.name} className="flex flex-col gap-2">
-                      <span className="text-lg font-medium text-ink">
-                        {field.label}
-                      </span>
+                    <label key={field.name} className="flex flex-col gap-[7px]">
+                      <span className={labelBase}>{field.label}</span>
                       <input
-                        {...register(field.name)}
-                        type={field.type}
-                        autoComplete="name"
+                        {...whatsapp}
+                        type="tel"
+                        inputMode="numeric"
+                        autoComplete="tel"
                         placeholder={field.placeholder}
-                        className={`${base} ${invalid}`}
+                        className={`${inputBase} ${invalid}`}
+                        onChange={(e) => {
+                          e.target.value = maskPhone(e.target.value);
+                          whatsapp.onChange(e);
+                        }}
                       />
                       {err && (
                         <span className="text-sm font-medium text-danger">
@@ -270,31 +252,24 @@ export function FinalCta() {
                       )}
                     </label>
                   );
-                })}
+                }
 
-                {choices.map((choice) => {
-                  const err = errors[choice.name]?.message;
+                if (field.name === "email") {
                   return (
-                    <label key={choice.name} className="flex flex-col gap-2">
-                      <span className="text-lg font-medium text-ink">
-                        {choice.label}
-                      </span>
-                      <select
-                        {...register(choice.name)}
-                        defaultValue=""
-                        className={`h-12 rounded-sm bg-[#f1f1f1] px-4 text-lg text-ink outline-none ring-primary/60 transition focus:ring-2 ${
-                          err ? "ring-2 ring-danger" : ""
-                        }`}
-                      >
-                        <option value="" disabled>
-                          Selecione uma opção
-                        </option>
-                        {choice.options.map((opt) => (
-                          <option key={opt} value={opt}>
-                            {opt}
-                          </option>
-                        ))}
-                      </select>
+                    <label key={field.name} className="flex flex-col gap-[7px]">
+                      <span className={labelBase}>{field.label}</span>
+                      <input
+                        {...email}
+                        type="email"
+                        inputMode="email"
+                        autoComplete="email"
+                        placeholder={field.placeholder}
+                        className={`${inputBase} ${invalid}`}
+                        onChange={(e) => {
+                          e.target.value = normalizeEmail(e.target.value);
+                          email.onChange(e);
+                        }}
+                      />
                       {err && (
                         <span className="text-sm font-medium text-danger">
                           {err}
@@ -302,29 +277,79 @@ export function FinalCta() {
                       )}
                     </label>
                   );
-                })}
+                }
 
-                {mutation.isError && (
-                  <p className="text-sm font-medium text-danger">
-                    {mutation.error.message}
-                  </p>
-                )}
+                return (
+                  <label key={field.name} className="flex flex-col gap-[7px]">
+                    <span className={labelBase}>{field.label}</span>
+                    <input
+                      {...register(field.name)}
+                      type={field.type}
+                      autoComplete="name"
+                      placeholder={field.placeholder}
+                      className={`${inputBase} ${invalid}`}
+                    />
+                    {err && (
+                      <span className="text-sm font-medium text-danger">
+                        {err}
+                      </span>
+                    )}
+                  </label>
+                );
+              })}
 
-                <button
-                  type="submit"
-                  disabled={mutation.isPending}
-                  className="mt-4 inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-base font-extrabold uppercase tracking-wide text-primary-foreground shadow-gold transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:text-lg"
-                >
-                  {mutation.isPending
-                    ? "Enviando..."
-                    : "Quero agendar minha análise gratuita"}
-                </button>
-              </form>
-            )}
-            </div>
-          </Reveal>
-        </Container>
-      </div>
+              {choices.map((choice) => {
+                const err = errors[choice.name]?.message;
+                return (
+                  <label key={choice.name} className="flex flex-col gap-[7px]">
+                    <span className={labelBase}>{choice.label}</span>
+                    <select
+                      {...register(choice.name)}
+                      defaultValue=""
+                      className={`${inputBase} text-[#555] ${
+                        err ? "border-danger" : ""
+                      }`}
+                    >
+                      <option value="" disabled>
+                        Selecione uma opção
+                      </option>
+                      {choice.options.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                    {err && (
+                      <span className="text-sm font-medium text-danger">
+                        {err}
+                      </span>
+                    )}
+                  </label>
+                );
+              })}
+
+              {mutation.isError && (
+                <p className="text-sm font-medium text-danger">
+                  {mutation.error.message}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={mutation.isPending}
+                className="mt-2 rounded-[10px] bg-primary px-8 py-[17px] text-base font-bold text-primary-foreground transition-[background,transform] hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {mutation.isPending
+                  ? "Enviando..."
+                  : "Quero agendar minha análise gratuita"}
+              </button>
+              <p className="text-center text-xs text-[#999]">
+                Resposta em minutos, direto no seu WhatsApp.
+              </p>
+            </form>
+          )}
+        </Reveal>
+      </Container>
     </section>
   );
 }

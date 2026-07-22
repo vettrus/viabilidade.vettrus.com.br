@@ -2,6 +2,9 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
+const ASSETS =
+  "https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets";
+
 const steps = [
   { n: "01", label: "Preencha o formulário" },
   { n: "02", label: "Equipe entra em contato em minutos" },
@@ -11,44 +14,56 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="como-funciona" className="pt-20 lg:pt-28">
-      <Container>
-        <Reveal>
-          <h2 className="text-center text-2xl font-bold text-primary sm:text-3xl">
+    <section
+      id="como-funciona"
+      className="relative overflow-hidden border-y border-white/[0.07] py-16 lg:py-28"
+    >
+      {/* Imagem de fundo */}
+      <Image
+        src={`${ASSETS}/photo-how.jpg`}
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      {/* Overlay escuro (topo → base) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(12,13,15,0.92) 0%, rgba(12,13,15,0.84) 100%)",
+        }}
+      />
+
+      <Container className="relative">
+        <Reveal className="mb-12 flex max-w-[640px] flex-col gap-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            Passo a passo
+          </p>
+          <h2 className="text-[clamp(1.875rem,4vw,3.125rem)] font-bold leading-[1.08] tracking-[-0.02em] text-white">
             Como funciona?
           </h2>
         </Reveal>
 
-        <div className="mx-auto mt-14 flex max-w-4xl flex-col gap-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
-            <Reveal key={step.n} delay={i * 80}>
-              <div className="flex items-stretch overflow-hidden rounded-sm bg-white/10">
-                <span aria-hidden="true" className="w-2 shrink-0 bg-primary" />
-                <div className="flex flex-1 items-center gap-6 px-6 py-6 sm:gap-6 sm:px-8">
-                  <span className="text-2xl font-bold text-primary sm:text-3xl">
-                    {step.n}
-                  </span>
-                  <span className="text-lg font-bold leading-snug text-white sm:text-xl">
-                    {step.label}
-                  </span>
-                </div>
+            <Reveal
+              key={step.n}
+              delay={i * 80}
+              className="rounded-2xl border border-white/[0.09] bg-[#16181B] px-6 py-8"
+            >
+              <div className="mb-4 text-[44px] font-extrabold leading-none tracking-[-0.02em] text-primary/90">
+                {step.n}
               </div>
+              <p className="text-base leading-normal text-[#D3D8DD]">
+                {step.label}
+              </p>
             </Reveal>
           ))}
         </div>
       </Container>
-
-      {/* Full-bleed photo strip */}
-      <div className="relative mt-20 h-[300px] w-full sm:h-[420px] lg:h-[480px]">
-        <Image
-          src="https://supabase.viabilidade.vettrus.com.br/storage/v1/object/public/assets/photo-how.jpg"
-          alt="Especialistas Vettrus em análise de importação"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background" />
-      </div>
     </section>
   );
 }

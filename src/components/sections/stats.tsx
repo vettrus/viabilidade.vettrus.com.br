@@ -1,13 +1,19 @@
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { CountUp } from "@/components/ui/count-up";
 
-type Stat = { number: string; caption: string };
+type Stat = {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  caption: string;
+};
 
 const stats: Stat[] = [
-  { number: "+22 anos", caption: "de comércio exterior" },
-  { number: "+10 mil", caption: "importações estruturadas" },
-  { number: "+350", caption: "clientes ativos" },
-  { number: "2", caption: "escritórios na China" },
+  { value: 22, prefix: "+", suffix: " anos", caption: "de comércio exterior" },
+  { value: 10, prefix: "+", suffix: " mil", caption: "importações estruturadas" },
+  { value: 350, prefix: "+", caption: "clientes ativos" },
+  { value: 2, caption: "escritórios na China" },
 ];
 
 export function Stats() {
@@ -31,11 +37,14 @@ export function Stats() {
 
         <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
           {stats.map((stat, i) => (
-            <Reveal key={stat.number} delay={i * 80}>
+            <Reveal key={stat.caption} delay={i * 80}>
               <div className="flex flex-col gap-2 border-l-2 border-primary/40 pl-5">
-                <span className="text-4xl font-extrabold leading-none text-primary sm:text-5xl">
-                  {stat.number}
-                </span>
+                <CountUp
+                  value={stat.value}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                  className="text-4xl font-extrabold leading-none text-primary sm:text-5xl"
+                />
                 <span className="text-sm font-medium leading-snug text-white/80 sm:text-base">
                   {stat.caption}
                 </span>

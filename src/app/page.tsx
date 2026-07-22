@@ -3,7 +3,6 @@ import { Hero } from "@/components/sections/hero";
 import { Stats } from "@/components/sections/stats";
 import { Pain } from "@/components/sections/pain";
 import { WhatIs } from "@/components/sections/what-is";
-import { Honesty } from "@/components/sections/honesty";
 import { NotLottery } from "@/components/sections/not-lottery";
 import { Outcomes } from "@/components/sections/outcomes";
 import { HowItWorks } from "@/components/sections/how-it-works";
@@ -21,7 +20,6 @@ export default function Home() {
         <Stats />
         <Pain />
         <WhatIs />
-        <Honesty />
         <NotLottery />
         <Outcomes />
         <HowItWorks />
