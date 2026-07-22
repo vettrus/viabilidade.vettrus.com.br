@@ -15,9 +15,9 @@ export function Hero() {
           sizes="100vw"
           className="object-cover object-center opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
         {/* Sombra de cima para baixo */}
-        <div className="absolute inset-x-0 top-0 h-3/4 bg-gradient-to-b from-background/80 via-background/40 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-3/4 bg-gradient-to-b from-background/95 via-background/60 to-transparent" />
       </div>
 
       <Container className="relative flex flex-col items-center pt-8 pb-12 text-center lg:pt-10 lg:pb-16">
