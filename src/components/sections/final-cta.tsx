@@ -161,9 +161,9 @@ export function FinalCta() {
       id="agendar"
       className="border-t border-black/[0.08] bg-white text-ink"
     >
-      <Container className="grid items-start gap-10 py-16 lg:grid-cols-2 lg:gap-[72px] lg:py-28">
+      <Container className="grid grid-cols-1 items-start gap-10 py-16 lg:grid-cols-2 lg:gap-[72px] lg:py-28">
         {/* Coluna esquerda — texto */}
-        <Reveal className="flex flex-col gap-5">
+        <Reveal className="flex min-w-0 flex-col gap-5">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#141414]">
             Agora é com você
           </p>
@@ -195,7 +195,7 @@ export function FinalCta() {
         </Reveal>
 
         {/* Coluna direita — form */}
-        <Reveal>
+        <Reveal className="min-w-0">
           {mutation.isSuccess ? (
             <div className="rounded-[18px] border border-primary/50 bg-[#F6F6F3] p-9 text-center sm:p-14">
               <div className="mx-auto mb-5 grid size-16 place-items-center rounded-full bg-primary/[0.18]">
