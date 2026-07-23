@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getKommoConfig,
@@ -143,11 +143,14 @@ const STATUS_TABS: { key: StatusFilter; label: string }[] = [
   { key: "pending", label: "Pendente" },
 ];
 
+const PAGE_SIZE = 20;
+
 export default function LeadsPage() {
   const qc = useQueryClient();
   const [selected, setSelected] = useState<Lead | null>(null);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<StatusFilter>("all");
+  const [page, setPage] = useState(1);
 
   const leadsQuery = useQuery({ queryKey: ["leads"], queryFn: listLeads });
   const kommoQuery = useQuery({
@@ -168,15 +171,28 @@ export default function LeadsPage() {
 
   const leads = leadsQuery.data ?? [];
   const q = search.trim().toLowerCase();
-  const filtered = leads
-    .filter((l) => status === "all" || leadStatus(l) === status)
-    .filter((l) =>
-      !q
-        ? true
-        : [l.name, l.email, l.phone, l.company, l.utm?.utm_campaign, l.source_section]
-            .filter(Boolean)
-            .some((v) => String(v).toLowerCase().includes(q)),
-    );
+  const filtered = useMemo(
+    () =>
+      leads
+        .filter((l) => status === "all" || leadStatus(l) === status)
+        .filter((l) =>
+          !q
+            ? true
+            : [l.name, l.email, l.phone, l.company, l.utm?.utm_campaign, l.source_section]
+                .filter(Boolean)
+                .some((v) => String(v).toLowerCase().includes(q)),
+        ),
+    [leads, status, q],
+  );
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, pageCount);
+  const paged = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
+  // Volta pra pág. 1 quando filtro/busca muda o conjunto.
+  useEffect(() => {
+    setPage(1);
+  }, [status, q]);
 
   return (
     <div className="flex flex-col gap-5">
@@ -266,7 +282,7 @@ export default function LeadsPage() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((lead) => (
+                {paged.map((lead) => (
                   <tr
                     key={lead.id}
                     className="cursor-pointer border-b border-border/60 transition-colors hover:bg-muted/40"
@@ -297,6 +313,34 @@ export default function LeadsPage() {
           </div>
         )}
       </Card>
+
+      {filtered.length > PAGE_SIZE && (
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-muted-foreground">
+            {(safePage - 1) * PAGE_SIZE + 1}–
+            {Math.min(safePage * PAGE_SIZE, filtered.length)} de {filtered.length}
+          </p>
+          <div className="flex items-center gap-2">
+            <AdminButton
+              variant="outline"
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={safePage <= 1}
+            >
+              Anterior
+            </AdminButton>
+            <span className="text-sm text-muted-foreground">
+              Página {safePage} de {pageCount}
+            </span>
+            <AdminButton
+              variant="outline"
+              onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
+              disabled={safePage >= pageCount}
+            >
+              Próxima
+            </AdminButton>
+          </div>
+        </div>
+      )}
 
       <LeadModal
         lead={selected}
